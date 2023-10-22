@@ -9,9 +9,10 @@ async function bootstrap() {
   .setTitle('Billar RoadStreet')
   .setDescription('API Para los diferentes registros')
   .setVersion('1.0')
-  .build()
+  .build();
   const document = SwaggerModule.createDocument(app,config);
   SwaggerModule.setup('api', app, document);
+  app.enableCors();
   await app.listen(4000);
 }
 bootstrap();
