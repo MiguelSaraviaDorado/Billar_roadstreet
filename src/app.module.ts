@@ -3,15 +3,10 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { TypeProductModule } from './type_product/type_product.module';
 import { PersonModule } from './person/person.module';
 import { UserModule } from './user/user.module';
-import { ReserveModule } from './reserve/reserve.module';
-import { PoolTableModule } from './pool_table/pool_table.module';
-import { BillModule } from './bill/bill.module';
-import { TimePoolTableModule } from './time_pool_table/time_pool_table.module';
-import { BillDetailModule } from './bill_detail/bill_detail.module';
 import { ProductModule } from './product/product.module';
-import { TypeProductModule } from './type_product/type_product.module';
 
 @Module({
   imports    : [
@@ -26,15 +21,10 @@ import { TypeProductModule } from './type_product/type_product.module';
       synchronize: true,
     }
     ),
+    TypeProductModule,
     PersonModule,
     UserModule,
-    ReserveModule,
-    PoolTableModule,
-    BillModule,
-    TimePoolTableModule,
-    BillDetailModule,
     ProductModule,
-    TypeProductModule,
   ],
   controllers: [AppController],
   providers  : [AppService],

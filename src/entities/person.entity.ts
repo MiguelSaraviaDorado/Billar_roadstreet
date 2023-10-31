@@ -1,24 +1,21 @@
-//IMPORT
+//import
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { user } from './user.entity';
-import { reserve } from './reserve.entity';
+import { user_billar } from './user_billar.entity';
 
-//EXPORT
-@Entity()
-export class person {
-    @PrimaryGeneratedColumn('identity') idperson: number;
+//export
+@Entity('person')
+export class person{
+    @PrimaryGeneratedColumn('identity') id_person: number;
 
     @Column('int') dni: number;
+    
+    @Column('varchar', {length: 20, nullable:false}) name_person: string;
 
-    @Column('varchar', {length:20, nullable:false}) name: string;
-
-    @Column('varchar', {length:30, nullable:false}) last_name: string;
+    @Column('varchar', {length: 30}) last_name: string;
 
     @Column('date') date_person: Date;
 
     @Column('int') cellphone: number;
 
-    @OneToMany(() => user, (tperson) => tperson.ruser) truser:user[];
-
-    @OneToMany(() => reserve, (treserve) => treserve.rreserve) treserve:reserve[];
+    @OneToMany(() => user_billar, rperson => rperson.r_person) ruser:user_billar[];
 }

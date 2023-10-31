@@ -1,22 +1,19 @@
-//IMPORT
-import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
-import { type_product } from './type_product.entity';
-import { bill_detail } from './bill_detail.entity';
+//Import
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { type_product } from "./type_product.entity";
 
-//EXPORT
-@Entity()
+//export
+@Entity('product')
 export class product {
     @PrimaryGeneratedColumn('identity') id_product: number;
 
-    @Column('varchar', {length:20, nullable:false}) nameproduct: string;
+    @Column('varchar',{length:20, nullable:false}) name_product:string;
 
-    @Column('varchar', {length:40}) description: string;
+    @Column('varchar',{length:40}) description:string;
 
-    @Column('numeric', {nullable:false}) price: number;
+    @Column('numeric') price: number;
 
-    @Column('int', {nullable:false}) quantity: number;
+    @Column('int') quantity: number;
 
-    @ManyToOne(() => type_product, (ttypeproduct) => ttypeproduct.rtproduct) rproduct: type_product;
-
-    @OneToMany(() => bill_detail, (tbill_detail) => tbill_detail.rid_bill) r_bdetail: bill_detail[];
+    @ManyToOne(() => type_product, rproduct => rproduct.r_product) r_typeproduct:type_product;
 }
